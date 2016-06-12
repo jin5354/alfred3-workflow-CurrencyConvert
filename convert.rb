@@ -32,7 +32,7 @@ if hasARGV
         result['rates'].each do |key, value|
             workflow.result
                 .title("#{(num.to_i*value).round(2)} #{key}")
-                .subtitle("#{cy} : #{key} = 1 : #{value.round(2)} (Last Update: #{result["date"]})")
+                .subtitle("#{cy} : #{key} = 1 : #{value.round(4)} (Last Update: #{result["date"]})")
                 .valid(true)
                 .icon("flags/#{key}.png")
         end
@@ -43,7 +43,7 @@ else
     result = JSON.parse(Net::HTTP.get(uri))
     result['rates'].each do |key, value|
         workflow.result
-            .title("CNY : #{key} = 1 : #{value.round(2)} ")
+            .title("CNY : #{key} = 1 : #{value.round(4)} ")
             .subtitle("Last Update: #{result["date"]}")
             .valid(true)
             .icon("flags/#{key}.png")
