@@ -1,0 +1,13 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    alfred-3_workflow (0.1.0)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  alfred-3_workflow
+
+BUNDLED WITH
+   1.12.5
