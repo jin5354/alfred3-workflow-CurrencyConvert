@@ -9,6 +9,9 @@ if !ARGV.empty?
 end
 
 output = Hash["items" => []]
+data = JSON.parse(File.read('data.json'))
+base = data['base']
+units = data['units']
 
 if hasARGV
     str = ARGV[0].lstrip.gsub('$', 'usd').gsub('￥', 'cny').gsub('¥', 'jpy').gsub('£', 'gbp').gsub('€', 'eur')
@@ -25,7 +28,7 @@ if hasARGV
     else
         num = num[0]
         cy = cy[0].upcase
-        uri = URI("http://api.fixer.io/latest?base=#{cy}&symbols=CNY,USD,JPY,EUR,HKD,GBP,CAD")
+        uri = URI("http://api.fixer.io/latest?base=#{cy}&symbols=#{units.join(',')}")
         result = JSON.parse(Net::HTTP.get(uri))
         result['rates'].each do |key, value|
             temp = Hash[
@@ -33,22 +36,23 @@ if hasARGV
                 "subtitle" => "#{cy} : #{key} = 1 : #{value.round(4)} (Last Update: #{result["date"]})",
                 "icon" => Hash[
                     "path" => "flags/#{key}.png"
-                ]
+                ],
+                "arg" => "#{(num.to_i*value).round(2)}"
             ]
             output["items"].push(temp)
         end
     end
 else
-    base = 'CNY'
-    uri = URI('http://api.fixer.io/latest?base=CNY&symbols=CNY,USD,JPY,EUR,HKD,GBP,CAD')
+    uri = URI("http://api.fixer.io/latest?base=#{base}&symbols=#{units.join(',')}")
     result = JSON.parse(Net::HTTP.get(uri))
     result['rates'].each do |key, value|
         temp = Hash[
-            "title" => "CNY : #{key} = 1 : #{value.round(4)} ",
+            "title" => "#{base} : #{key} = 1 : #{value.round(4)} ",
             "subtitle" => "Last Update: #{result["date"]}",
             "icon" => Hash[
                 "path" => "flags/#{key}.png"
-            ]
+            ],
+            "arg" => "#{value.round(4)}"
         ]
         output["items"].push(temp)
     end
