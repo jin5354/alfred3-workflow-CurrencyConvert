@@ -2,6 +2,8 @@
 
 This alfred3 workflow can convert currency conveniently.
 
+[Download](https://github.com/jin5354/alfred3-workflow-CurrencyConvert/releases)
+
 ## features
 
 1. Support 30+ currency units with fixer.io.
