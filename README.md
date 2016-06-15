@@ -2,9 +2,15 @@
 
 This alfred3 workflow can convert currency conveniently.
 
+## features
+
+1. Support 30+ currency units with fixer.io.
+2. Basic support for sign. e.g.,$,￥,£,etc.
+3. Customizable displayed currency units and base unit.
+
 ## screenshots
 
-Tap 'cy' to see the latest exchange rate of CNY.
+Tap 'cy' to see the latest exchange rate of your base unit.
 
 ![screenshots1](https://raw.githubusercontent.com/jin5354/alfred3-workflow-CurrencyConvert/master/screenshots/cy1.png)
 
@@ -12,8 +18,18 @@ Tap 'cy money' to see the exchanged money.
 
 ![screenshots2](https://raw.githubusercontent.com/jin5354/alfred3-workflow-CurrencyConvert/master/screenshots/cy2.png)
 
+Tap 'add-cy' or 'remove-cy' to adjust displayed currency units.
+
+Tap 'base-cy' or 'remove-cy' to set base unit.
+
 ## todo
 
-1. support more currency units.
-2. support currency sign($ etc.)
-3. customizable common currency units.
+1. ~~support more currency units.~~
+2. ~~support currency sign($ etc.)~~
+3. ~~customizable common currency units.~~
+
+All done!
+
+## license
+
+MIT
