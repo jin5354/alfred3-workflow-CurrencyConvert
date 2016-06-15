@@ -10,17 +10,19 @@ This alfred3 workflow can convert currency conveniently.
 
 ## screenshots
 
-Tap 'cy' to see the latest exchange rate of your base unit.
+Tap 'cy' to see the latest exchange rate of your base unit. Enter to send the exchange rate to the clipboard.
 
-![screenshots1](https://raw.githubusercontent.com/jin5354/alfred3-workflow-CurrencyConvert/master/screenshots/cy1.png)
+![screenshots1](https://raw.githubusercontent.com/jin5354/alfred3-workflow-CurrencyConvert/master/screenshots/ss1.png)
 
-Tap 'cy money' to see the exchanged money.
+Tap 'cy money' to see the exchanged money. Enter to send the amount to the clipboard.
 
-![screenshots2](https://raw.githubusercontent.com/jin5354/alfred3-workflow-CurrencyConvert/master/screenshots/cy2.png)
+![screenshots2](https://raw.githubusercontent.com/jin5354/alfred3-workflow-CurrencyConvert/master/screenshots/ss2.png)
 
-Tap 'add-cy' or 'remove-cy' to adjust displayed currency units.
+Tap 'add-cy' or 'remove-cy' to customize displayed currency units.
 
-Tap 'base-cy' or 'remove-cy' to set base unit.
+![screenshots3](https://raw.githubusercontent.com/jin5354/alfred3-workflow-CurrencyConvert/master/screenshots/ss3.png)
+
+Tap 'base-cy' to set base unit.
 
 ## todo
 
