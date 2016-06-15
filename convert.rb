@@ -11,7 +11,7 @@ end
 output = Hash["items" => []]
 
 if hasARGV
-    str = ARGV[0].lstrip
+    str = ARGV[0].lstrip.gsub('$', 'usd').gsub('￥', 'cny').gsub('¥', 'jpy').gsub('£', 'gbp').gsub('€', 'eur')
     num = str.match(/^\d+/)
     cy = str.match(/[a-zA-Z]{3}/)
     if str.empty? || num.nil? || cy.nil?
