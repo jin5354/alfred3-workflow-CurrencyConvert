@@ -20,6 +20,16 @@
 				<key>vitoclose</key>
 				<false/>
 			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>40CA216B-AC66-49E8-9674-AC0914076204</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
 		</array>
 		<key>11FA8030-0DC7-44EC-B147-2F65BCDBC10B</key>
 		<array>
@@ -33,12 +43,32 @@
 				<key>vitoclose</key>
 				<false/>
 			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>15258726-26CE-470B-B327-7606B68D1ABC</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
 		</array>
 		<key>22234024-418C-4C4F-BCFB-38657A1A2BE6</key>
 		<array>
 			<dict>
 				<key>destinationuid</key>
 				<string>36DBE0D2-7565-420A-812C-1D1507381B18</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>85F9B2DB-C12A-461A-A85E-9A7168B8D360</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -157,6 +187,27 @@
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>lastpathcomponent</key>
+				<false/>
+				<key>onlyshowifquerypopulated</key>
+				<false/>
+				<key>removeextension</key>
+				<false/>
+				<key>text</key>
+				<string>The unit "{query}" has been added successfully.</string>
+				<key>title</key>
+				<string>Added!</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.notification</string>
+			<key>uid</key>
+			<string>40CA216B-AC66-49E8-9674-AC0914076204</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>alfredfiltersresults</key>
 				<false/>
 				<key>argumenttype</key>
@@ -266,6 +317,27 @@
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>lastpathcomponent</key>
+				<false/>
+				<key>onlyshowifquerypopulated</key>
+				<false/>
+				<key>removeextension</key>
+				<false/>
+				<key>text</key>
+				<string>The unit "{query}" has been removed successfully.</string>
+				<key>title</key>
+				<string>Removed!</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.notification</string>
+			<key>uid</key>
+			<string>85F9B2DB-C12A-461A-A85E-9A7168B8D360</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>concurrently</key>
 				<false/>
 				<key>escaping</key>
@@ -329,6 +401,27 @@
 			<key>version</key>
 			<integer>2</integer>
 		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>lastpathcomponent</key>
+				<false/>
+				<key>onlyshowifquerypopulated</key>
+				<false/>
+				<key>removeextension</key>
+				<false/>
+				<key>text</key>
+				<string>The unit "{query}" has been set successfully.</string>
+				<key>title</key>
+				<string>Succeed!</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.notification</string>
+			<key>uid</key>
+			<string>15258726-26CE-470B-B327-7606B68D1ABC</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
 	</array>
 	<key>readme</key>
 	<string>This alfred3 workflow can convert currency conveniently.</string>
@@ -348,6 +441,13 @@
 			<key>ypos</key>
 			<integer>400</integer>
 		</dict>
+		<key>15258726-26CE-470B-B327-7606B68D1ABC</key>
+		<dict>
+			<key>xpos</key>
+			<integer>620</integer>
+			<key>ypos</key>
+			<integer>400</integer>
+		</dict>
 		<key>22234024-418C-4C4F-BCFB-38657A1A2BE6</key>
 		<dict>
 			<key>xpos</key>
@@ -361,6 +461,13 @@
 			<integer>440</integer>
 			<key>ypos</key>
 			<integer>280</integer>
+		</dict>
+		<key>40CA216B-AC66-49E8-9674-AC0914076204</key>
+		<dict>
+			<key>xpos</key>
+			<integer>620</integer>
+			<key>ypos</key>
+			<integer>160</integer>
 		</dict>
 		<key>449BB4CD-3FE5-46FE-9E85-927254EC3D4E</key>
 		<dict>
@@ -382,6 +489,13 @@
 			<integer>440</integer>
 			<key>ypos</key>
 			<integer>30</integer>
+		</dict>
+		<key>85F9B2DB-C12A-461A-A85E-9A7168B8D360</key>
+		<dict>
+			<key>xpos</key>
+			<integer>620</integer>
+			<key>ypos</key>
+			<integer>280</integer>
 		</dict>
 		<key>D31707DD-7B80-4831-8389-48B48F4C2935</key>
 		<dict>
