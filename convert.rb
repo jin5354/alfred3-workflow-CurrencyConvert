@@ -4,7 +4,7 @@ require 'json'
 
 hasARGV = false
 
-if !ARGV.empty? 
+if !ARGV[0].empty?
     hasARGV = true
 end
 
