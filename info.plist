@@ -123,7 +123,7 @@
 				<key>runningsubtext</key>
 				<string>connecting server....</string>
 				<key>script</key>
-				<string>LANG=en_US.UTF-8 /usr/bin/ruby ./convert.rb {query}</string>
+				<string>LANG=en_US.UTF-8 /usr/bin/ruby ./convert.rb "{query}"</string>
 				<key>scriptargtype</key>
 				<integer>0</integer>
 				<key>scriptfile</key>

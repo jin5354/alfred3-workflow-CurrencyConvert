@@ -16,7 +16,7 @@ units = data['units']
 if hasARGV
     str = ARGV[0].lstrip.gsub('$', 'usd').gsub('￥', 'cny').gsub('¥', 'jpy').gsub('£', 'gbp').gsub('€', 'eur')
     num = str.match(/^\d+/)
-    cy = str.match(/[a-zA-Z]{3}/)
+    cy = str.match(/\s*[a-zA-Z]{3}/)
     if str.empty? || num.nil? || cy.nil?
         temp = Hash[
             "title" => 'No result',
@@ -27,7 +27,7 @@ if hasARGV
         output["items"].push(temp)
     else
         num = num[0]
-        cy = cy[0].upcase
+        cy = cy[0].lstrip.upcase
         uri = URI("http://api.fixer.io/latest?base=#{cy}&symbols=#{units.join(',')}")
         result = JSON.parse(Net::HTTP.get(uri))
         result['rates'].each do |key, value|
