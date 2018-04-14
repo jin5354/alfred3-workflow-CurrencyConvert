@@ -14,25 +14,19 @@ This alfred3 workflow can convert currency conveniently.
 
 Tap 'cy' to see the latest exchange rate of your base unit. Enter to send the exchange rate to the clipboard.
 
-![screenshots1](https://raw.githubusercontent.com/jin5354/alfred3-workflow-CurrencyConvert/master/screenshots/ss1.png)
+![ss1](https://user-images.githubusercontent.com/6868950/38769226-cd2fdf90-4031-11e8-8f95-575ebdb17a10.png)
 
-Tap 'cy money' to see the exchanged money. Enter to send the amount to the clipboard.
+Tap 'cy money' or 'cy money to sth' to see the exchanged money. Enter to send the amount to the clipboard.
 
-![screenshots2](https://raw.githubusercontent.com/jin5354/alfred3-workflow-CurrencyConvert/master/screenshots/ss2.png)
+![ss2](https://user-images.githubusercontent.com/6868950/38769243-ff4396f2-4031-11e8-9d97-e59f5a65911f.png)
+
+![ss3](https://user-images.githubusercontent.com/6868950/38769208-8b191af4-4031-11e8-8362-e19f176b300a.png)
 
 Tap 'add-cy' or 'remove-cy' to customize displayed currency units.
 
-![screenshots3](https://raw.githubusercontent.com/jin5354/alfred3-workflow-CurrencyConvert/master/screenshots/ss3.png)
+![ss4](https://user-images.githubusercontent.com/6868950/38769245-073a8c3a-4032-11e8-896a-40856e726117.png)
 
 Tap 'base-cy' to set base unit.
-
-## todo
-
-1. ~~support more currency units.~~
-2. ~~support currency sign($ etc.)~~
-3. ~~customizable common currency units.~~
-
-All done!
 
 ## license
 
