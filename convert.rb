@@ -20,7 +20,7 @@ if hasARGV
     num = nil
     target = nil
     if to.nil?
-        num = str.match(/^\d+/)
+        num = str.match(/^\d+(.\d+)?/)
         if !num.nil?
             num = num[0]
         end
@@ -29,11 +29,11 @@ if hasARGV
             cy = cy[0].lstrip.upcase
         end
     else
-        matcher = str.match(/^(\d+)\s*([a-zA-Z]{3})\sto\s([a-zA-Z]{3})/)
+        matcher = str.match(/^(\d+(.\d+)?)\s*([a-zA-Z]{3})\sto\s([a-zA-Z]{3})/)
         if !matcher.nil?
             num = matcher[1]
-            cy = matcher[2].lstrip.upcase
-            target = matcher[3].lstrip.upcase
+            cy = matcher[3].lstrip.upcase
+            target = matcher[4].lstrip.upcase
         end
     end
     if str.empty? || num.nil? || cy.nil?
@@ -50,12 +50,12 @@ if hasARGV
             result = JSON.parse(Net::HTTP.get(uri))
             result['rates'].each do |key, value|
                 temp = Hash[
-                    "title" => "#{(num.to_i*value).round(2)} #{key}",
+                    "title" => "#{(num.to_f*value).round(2)} #{key}",
                     "subtitle" => "#{cy} : #{key} = 1 : #{value.round(4)} (Last Update: #{result["date"]})",
                     "icon" => Hash[
                         "path" => "flags/#{key}.png"
                     ],
-                    "arg" => "#{(num.to_i*value).round(2)}"
+                    "arg" => "#{(num.to_f*value).round(2)}"
                 ]
                 output["items"].push(temp)
             end
@@ -64,12 +64,12 @@ if hasARGV
             result = JSON.parse(Net::HTTP.get(uri))
             result['rates'].each do |key, value|
                 temp = Hash[
-                    "title" => "#{(num.to_i*value).round(2)} #{key}",
+                    "title" => "#{(num.to_f*value).round(2)} #{key}",
                     "subtitle" => "#{cy} : #{key} = 1 : #{value.round(4)} (Last Update: #{result["date"]})",
                     "icon" => Hash[
                         "path" => "flags/#{key}.png"
                     ],
-                    "arg" => "#{(num.to_i*value).round(2)}"
+                    "arg" => "#{(num.to_f*value).round(2)}"
                 ]
                 output["items"].push(temp)
             end
