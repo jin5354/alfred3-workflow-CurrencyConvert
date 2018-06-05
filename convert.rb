@@ -46,7 +46,7 @@ if hasARGV
         output["items"].push(temp)
     else
         if target.nil?
-            uri = URI("http://api.fixer.io/latest?base=#{cy}&symbols=#{units.join(',')}")
+            uri = URI("https://exchangeratesapi.io/api/latest?base=#{cy}&symbols=#{units.join(',')}")
             result = JSON.parse(Net::HTTP.get(uri))
             result['rates'].each do |key, value|
                 temp = Hash[
@@ -60,7 +60,7 @@ if hasARGV
                 output["items"].push(temp)
             end
         else
-            uri = URI("http://api.fixer.io/latest?base=#{cy}&symbols=#{target}")
+            uri = URI("https://exchangeratesapi.io/api/latest?base=#{cy}&symbols=#{target}")
             result = JSON.parse(Net::HTTP.get(uri))
             result['rates'].each do |key, value|
                 temp = Hash[
@@ -76,7 +76,7 @@ if hasARGV
         end
     end
 else
-    uri = URI("http://api.fixer.io/latest?base=#{base}&symbols=#{units.join(',')}")
+    uri = URI("https://exchangeratesapi.io/api/latest?base=#{base}&symbols=#{units.join(',')}")
     result = JSON.parse(Net::HTTP.get(uri))
     result['rates'].each do |key, value|
         temp = Hash[
