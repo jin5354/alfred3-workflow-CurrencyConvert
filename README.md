@@ -2,6 +2,8 @@
 
 This alfred3 workflow can convert currency conveniently.
 
+**Notice: The Old versions(v1.2-) api has been out of service at June 5, 2018. Please update to v1.3+ to keep using currency conversion feature.**
+
 [Download](https://github.com/jin5354/alfred3-workflow-CurrencyConvert/releases)
 
 ## features
