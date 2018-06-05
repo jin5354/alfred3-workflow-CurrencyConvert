@@ -7,7 +7,7 @@ data = JSON.parse(File.read('data.json'))
 base = data['base']
 units = data['units']
 
-uri = URI("http://api.fixer.io/latest?base=#{base}&symbols=#{units.join(',')}")
+uri = URI("https://exchangeratesapi.io/api/latest?base=#{base}&symbols=#{units.join(',')}")
 result = JSON.parse(Net::HTTP.get(uri))
 result['rates'].each do |key, value|
     temp = Hash[

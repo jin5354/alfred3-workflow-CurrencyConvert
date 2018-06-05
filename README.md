@@ -6,7 +6,7 @@ This alfred3 workflow can convert currency conveniently.
 
 ## features
 
-1. Support 30+ currency units with fixer.io.
+1. Support 30+ currency units with exchangeratesapi.io.
 2. Basic support for sign. e.g.,$,￥,£,etc.
 3. Customizable displayed currency units and base unit.
 
