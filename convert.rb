@@ -46,6 +46,9 @@ if hasARGV
         output["items"].push(temp)
     else
         if target.nil?
+            if units.include?(cy)
+                units.delete(cy)
+            end
             uri = URI("https://exchangeratesapi.io/api/latest?base=#{cy}&symbols=#{units.join(',')}")
             result = JSON.parse(Net::HTTP.get(uri))
             result['rates'].each do |key, value|
@@ -76,6 +79,9 @@ if hasARGV
         end
     end
 else
+    if units.include?(base)
+        units.delete(base)
+    end
     uri = URI("https://exchangeratesapi.io/api/latest?base=#{base}&symbols=#{units.join(',')}")
     result = JSON.parse(Net::HTTP.get(uri))
     result['rates'].each do |key, value|
