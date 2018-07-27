@@ -23,7 +23,7 @@ result['rates'].each do |key, value|
     ]
     output["items"].push(temp)
 end
-    
+
 output["items"].push(Hash[
     "title" => "BTC",
     "icon" => Hash[

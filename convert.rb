@@ -152,7 +152,7 @@ else
             output["items"].push(temp)
         end
     end
-    
+
     if includeBtc
         uri = URI("https://api.coindesk.com/v1/bpi/currentprice/#{base}.json")
         result = JSON.parse(Net::HTTP.get(uri))
@@ -168,7 +168,5 @@ else
         ])
     end
 end
-
-
 
 print output.to_json
