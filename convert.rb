@@ -56,18 +56,33 @@ if hasARGV
             if units.include?(cy)
                 units.delete(cy)
             end
-            uri = URI("https://exchangeratesapi.io/api/latest?base=#{cy}&symbols=#{units.join(',')}")
-            result = JSON.parse(Net::HTTP.get(uri))
-            result['rates'].each do |key, value|
-                temp = Hash[
-                    "title" => "#{(num.to_f*value).round(2)} #{key}",
-                    "subtitle" => "#{cy} : #{key} = 1 : #{value.round(4)} (Last Update: #{result["date"]})",
+            if cy.upcase.eql?("BTC")
+                uri = URI("https://api.coindesk.com/v1/bpi/currentprice/#{cy}.json")
+                result = JSON.parse(Net::HTTP.get(uri))
+                updated = DateTime.parse(result["time"]["updated"]).strftime("%Y-%m-%d")
+                rate = result['bpi'][cy]['rate_float']
+                output["items"].push(Hash[
+                    "title" => "#{num.to_f/rate} BTC",
+                    "subtitle" => "#{cy} : BTC = 1 : #{rate.round(4)} (Last Update: #{updated})",
                     "icon" => Hash[
-                        "path" => "flags/#{key}.png"
+                        "path" => "flags/BTC.png"
                     ],
-                    "arg" => "#{(num.to_f*value).round(2)}"
-                ]
-                output["items"].push(temp)
+                    "arg" => "#{(num.to_f/rate)}"
+                ])
+            else
+                uri = URI("https://exchangeratesapi.io/api/latest?base=#{cy}&symbols=#{units.join(',')}")
+                result = JSON.parse(Net::HTTP.get(uri))
+                result['rates'].each do |key, value|
+                    temp = Hash[
+                        "title" => "#{(num.to_f*value).round(2)} #{key}",
+                        "subtitle" => "#{cy} : #{key} = 1 : #{value.round(4)} (Last Update: #{result["date"]})",
+                        "icon" => Hash[
+                            "path" => "flags/#{key}.png"
+                        ],
+                        "arg" => "#{(num.to_f*value).round(2)}"
+                    ]
+                    output["items"].push(temp)
+                end
             end
             if includeBtc
                 uri = URI("https://api.coindesk.com/v1/bpi/currentprice/#{cy}.json")
@@ -89,27 +104,47 @@ if hasARGV
                 result = JSON.parse(Net::HTTP.get(uri))
                 updated = DateTime.parse(result["time"]["updated"]).strftime("%Y-%m-%d")
                 rate = result['bpi'][cy]['rate_float']
+                convertedValue = "%.12f" % (num.to_f/rate)
                 output["items"].push(Hash[
-                    "title" => "#{num.to_f/rate} BTC",
+                    "title" => "#{convertedValue} BTC",
                     "subtitle" => "#{cy} : BTC = 1 : #{rate.round(4)} (Last Update: #{updated})",
                     "icon" => Hash[
                         "path" => "flags/BTC.png"
                     ],
-                    "arg" => "#{(num.to_f/rate)}"
+                    "arg" => "#{convertedValue}"
                 ])
             else
-                uri = URI("https://exchangeratesapi.io/api/latest?base=#{cy}&symbols=#{target}")
-                result = JSON.parse(Net::HTTP.get(uri))
-                result['rates'].each do |key, value|
-                    temp = Hash[
-                        "title" => "#{(num.to_f*value).round(2)} #{key}",
-                        "subtitle" => "#{cy} : #{key} = 1 : #{value.round(4)} (Last Update: #{result["date"]})",
+                if cy.upcase.eql?("BTC")
+                    uri = URI("https://api.coindesk.com/v1/bpi/currentprice/USD.json")
+                    result = JSON.parse(Net::HTTP.get(uri))
+                    updated = DateTime.parse(result["time"]["updated"]).strftime("%Y-%m-%d")
+                    rate = result['bpi']['USD']['rate_float']
+                    uri = URI("https://exchangeratesapi.io/api/latest?base=USD&symbols=#{target}")
+                    result = JSON.parse(Net::HTTP.get(uri))
+                    converted = (result['rates'][target].to_f / 1) * rate
+                    convertedValue = (num.to_f * converted).round(2)
+                    output["items"].push(Hash[
+                        "title" => "#{convertedValue} #{target}",
+                        "subtitle" => "#{cy} : #{target} = 1 : #{converted.round(2)} (Last Update: #{result["date"]})",
                         "icon" => Hash[
-                            "path" => "flags/#{key}.png"
+                            "path" => "flags/#{target}.png"
                         ],
-                        "arg" => "#{(num.to_f*value).round(2)}"
-                    ]
-                    output["items"].push(temp)
+                        "arg" => "blag"
+                    ])
+                else
+                    uri = URI("https://exchangeratesapi.io/api/latest?base=#{cy}&symbols=#{target}")
+                    result = JSON.parse(Net::HTTP.get(uri))
+                    result['rates'].each do |key, value|
+                        temp = Hash[
+                            "title" => "#{(num.to_f*value).round(2)} #{key}",
+                            "subtitle" => "#{cy} : #{key} = 1 : #{value.round(4)} (Last Update: #{result["date"]})",
+                            "icon" => Hash[
+                                "path" => "flags/#{key}.png"
+                            ],
+                            "arg" => "#{(num.to_f*value).round(2)}"
+                        ]
+                        output["items"].push(temp)
+                    end
                 end
             end
         end
@@ -168,5 +203,7 @@ else
         ])
     end
 end
+
+
 
 print output.to_json
