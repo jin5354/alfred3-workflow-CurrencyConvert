@@ -20,7 +20,7 @@ if hasARGV
     num = nil
     target = nil
     if to.nil?
-        num = str.match(/^\d+(.\d+)?/)
+        num = str.match(/\d+(.\d+)?/)
         if !num.nil?
             num = num[0]
         end
