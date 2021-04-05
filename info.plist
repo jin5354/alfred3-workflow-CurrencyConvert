@@ -92,7 +92,7 @@
 		</array>
 	</dict>
 	<key>createdby</key>
-	<string>jin5354</string>
+	<string>jin5354. Updated by Topaz Barziv.</string>
 	<key>description</key>
 	<string>Currency Convert</string>
 	<key>disabled</key>
@@ -106,8 +106,14 @@
 			<dict>
 				<key>alfredfiltersresults</key>
 				<false/>
+				<key>alfredfiltersresultsmatchmode</key>
+				<integer>0</integer>
+				<key>argumenttreatemptyqueryasnil</key>
+				<false/>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
 				<key>argumenttype</key>
-				<integer>1</integer>
+				<integer>0</integer>
 				<key>escaping</key>
 				<integer>102</integer>
 				<key>keyword</key>
@@ -123,9 +129,11 @@
 				<key>runningsubtext</key>
 				<string>connecting server....</string>
 				<key>script</key>
-				<string>LANG=en_US.UTF-8 /usr/bin/ruby ./convert.rb "{query}"</string>
+				<string>query=$(echo "$1" | sed -n '1p' | tr -d '\n')
+
+LANG=en_US.UTF-8 /usr/bin/ruby ./convert.rb "${query}" ${accessKey}</string>
 				<key>scriptargtype</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>scriptfile</key>
 				<string></string>
 				<key>subtext</key>
@@ -142,7 +150,7 @@
 			<key>uid</key>
 			<string>D31707DD-7B80-4831-8389-48B48F4C2935</string>
 			<key>version</key>
-			<integer>2</integer>
+			<integer>3</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -151,6 +159,8 @@
 				<false/>
 				<key>clipboardtext</key>
 				<string>{query}</string>
+				<key>ignoredynamicplaceholders</key>
+				<false/>
 				<key>transient</key>
 				<false/>
 			</dict>
@@ -159,7 +169,7 @@
 			<key>uid</key>
 			<string>79411522-31DB-4AAD-8660-736796C2772F</string>
 			<key>version</key>
-			<integer>2</integer>
+			<integer>3</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -210,6 +220,12 @@
 			<dict>
 				<key>alfredfiltersresults</key>
 				<false/>
+				<key>alfredfiltersresultsmatchmode</key>
+				<integer>0</integer>
+				<key>argumenttreatemptyqueryasnil</key>
+				<false/>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
 				<key>argumenttype</key>
 				<integer>2</integer>
 				<key>escaping</key>
@@ -227,7 +243,7 @@
 				<key>runningsubtext</key>
 				<string>connecting server...</string>
 				<key>script</key>
-				<string>LANG=en_US.UTF-8 /usr/bin/ruby ./add.rb</string>
+				<string>LANG=en_US.UTF-8 /usr/bin/ruby ./add.rb ${accessKey}</string>
 				<key>scriptargtype</key>
 				<integer>0</integer>
 				<key>scriptfile</key>
@@ -246,7 +262,7 @@
 			<key>uid</key>
 			<string>00701EAB-E815-48A4-AE52-1C4DFC9CA7D3</string>
 			<key>version</key>
-			<integer>2</integer>
+			<integer>3</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -276,6 +292,12 @@
 			<dict>
 				<key>alfredfiltersresults</key>
 				<false/>
+				<key>alfredfiltersresultsmatchmode</key>
+				<integer>0</integer>
+				<key>argumenttreatemptyqueryasnil</key>
+				<false/>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
 				<key>argumenttype</key>
 				<integer>2</integer>
 				<key>escaping</key>
@@ -293,7 +315,7 @@
 				<key>runningsubtext</key>
 				<string>waiting..</string>
 				<key>script</key>
-				<string>LANG=en_US.UTF-8 /usr/bin/ruby ./remove.rb</string>
+				<string>LANG=en_US.UTF-8 /usr/bin/ruby ./remove.rb ${accessKey}</string>
 				<key>scriptargtype</key>
 				<integer>0</integer>
 				<key>scriptfile</key>
@@ -312,7 +334,7 @@
 			<key>uid</key>
 			<string>22234024-418C-4C4F-BCFB-38657A1A2BE6</string>
 			<key>version</key>
-			<integer>2</integer>
+			<integer>3</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -363,6 +385,12 @@
 			<dict>
 				<key>alfredfiltersresults</key>
 				<false/>
+				<key>alfredfiltersresultsmatchmode</key>
+				<integer>0</integer>
+				<key>argumenttreatemptyqueryasnil</key>
+				<false/>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
 				<key>argumenttype</key>
 				<integer>2</integer>
 				<key>escaping</key>
@@ -380,7 +408,7 @@
 				<key>runningsubtext</key>
 				<string>waiting..</string>
 				<key>script</key>
-				<string>LANG=en_US.UTF-8 /usr/bin/ruby ./base.rb {query}</string>
+				<string>LANG=en_US.UTF-8 /usr/bin/ruby ./base.rb {query} ${accessKey}</string>
 				<key>scriptargtype</key>
 				<integer>0</integer>
 				<key>scriptfile</key>
@@ -399,7 +427,7 @@
 			<key>uid</key>
 			<string>11FA8030-0DC7-44EC-B147-2F65BCDBC10B</string>
 			<key>version</key>
-			<integer>2</integer>
+			<integer>3</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -424,7 +452,10 @@
 		</dict>
 	</array>
 	<key>readme</key>
-	<string>This alfred3 workflow can convert currency conveniently.</string>
+	<string>This alfred4 workflow can convert currency conveniently.
+
+Go to https://www.exchangerate-api.com and create for yourself access key.
+Insert the access key here --------&gt;</string>
 	<key>uidata</key>
 	<dict>
 		<key>00701EAB-E815-48A4-AE52-1C4DFC9CA7D3</key>
@@ -505,7 +536,18 @@
 			<integer>30</integer>
 		</dict>
 	</dict>
+	<key>variables</key>
+	<dict>
+		<key>accessKey</key>
+		<string></string>
+	</dict>
+	<key>variablesdontexport</key>
+	<array>
+		<string>accessKey</string>
+	</array>
+	<key>version</key>
+	<string>2.0</string>
 	<key>webaddress</key>
-	<string>www.404forest.com</string>
+	<string>https://github.com/topazbarziv/alfred4-workflow-CurrencyConvert</string>
 </dict>
 </plist>
