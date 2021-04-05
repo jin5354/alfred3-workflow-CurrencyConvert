@@ -7,13 +7,13 @@ data = JSON.parse(File.read('data.json'))
 base = data['base']
 units = data['units']
 
-uri = URI("https://api.exchangeratesapi.io/latest?base=#{base}")
+uri = URI("https://v6.exchangerate-api.com/v6/#{ARGV[0]}/latest/#{base}")
 result = JSON.parse(Net::HTTP.get(uri))
-result['rates'].each do |key, value|
+result['conversion_rates'].each do |key, value|
     if !units.include?(key)
         temp = Hash[
             "title" => "#{key}",
-            "subtitle" => "#{base} : #{key} = 1 : #{value.round(4)} Last Update: #{result["date"]}",
+            "subtitle" => "#{base} : #{key} = 1 : #{value.round(4)} Last Update: #{result["time_last_update_utc"]}",
             "icon" => Hash[
                 "path" => "flags/#{key}.png"
             ],

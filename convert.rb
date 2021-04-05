@@ -49,32 +49,36 @@ if hasARGV
             if units.include?(cy)
                 units.delete(cy)
             end
-            uri = URI("https://api.exchangeratesapi.io/latest?base=#{cy}&symbols=#{units.join(',')}")
+            uri = URI("https://v6.exchangerate-api.com/v6/#{ARGV[1]}/latest/#{cy}")
             result = JSON.parse(Net::HTTP.get(uri))
-            result['rates'].each do |key, value|
-                temp = Hash[
-                    "title" => "#{(num.to_f*value).round(2)} #{key}",
-                    "subtitle" => "#{cy} : #{key} = 1 : #{value.round(4)} (Last Update: #{result["date"]})",
-                    "icon" => Hash[
-                        "path" => "flags/#{key}.png"
-                    ],
-                    "arg" => "#{(num.to_f*value).round(2)}"
-                ]
-                output["items"].push(temp)
+            result['conversion_rates'].each do |key, value|
+                if(units.include?(key))
+                    temp = Hash[
+                        "title" => "#{(num.to_f*value).round(2)} #{key}",
+                        "subtitle" => "#{cy} : #{key} = 1 : #{value.round(4)} (Last Update: #{result["time_last_update_utc"]})",
+                        "icon" => Hash[
+                            "path" => "flags/#{key}.png"
+                        ],
+                        "arg" => "#{(num.to_f*value).round(2)}"
+                    ]
+                    output["items"].push(temp)
+                end
             end
         else
-            uri = URI("https://api.exchangeratesapi.io/latest?base=#{cy}&symbols=#{target}")
+            uri = URI("https://v6.exchangerate-api.com/v6/#{ARGV[1]}/latest/#{cy}")
             result = JSON.parse(Net::HTTP.get(uri))
-            result['rates'].each do |key, value|
-                temp = Hash[
-                    "title" => "#{(num.to_f*value).round(2)} #{key}",
-                    "subtitle" => "#{cy} : #{key} = 1 : #{value.round(4)} (Last Update: #{result["date"]})",
-                    "icon" => Hash[
-                        "path" => "flags/#{key}.png"
-                    ],
-                    "arg" => "#{(num.to_f*value).round(2)}"
-                ]
-                output["items"].push(temp)
+            result['conversion_rates'].each do |key, value|
+                if(units.include?(key))
+                    temp = Hash[
+                        "title" => "#{(num.to_f*value).round(2)} #{key}",
+                        "subtitle" => "#{cy} : #{key} = 1 : #{value.round(4)} (Last Update: #{result["time_last_update_utc"]})",
+                        "icon" => Hash[
+                            "path" => "flags/#{key}.png"
+                        ],
+                        "arg" => "#{(num.to_f*value).round(2)}"
+                    ]
+                    output["items"].push(temp)
+                end
             end
         end
     end
@@ -82,18 +86,20 @@ else
     if units.include?(base)
         units.delete(base)
     end
-    uri = URI("https://api.exchangeratesapi.io/latest?base=#{base}&symbols=#{units.join(',')}")
+    uri = URI("https://v6.exchangerate-api.com/v6/#{ARGV[1]}/latest/#{base}")
     result = JSON.parse(Net::HTTP.get(uri))
-    result['rates'].each do |key, value|
-        temp = Hash[
-            "title" => "#{base} : #{key} = 1 : #{value.round(4)} ",
-            "subtitle" => "Last Update: #{result["date"]}",
-            "icon" => Hash[
-                "path" => "flags/#{key}.png"
-            ],
-            "arg" => "#{value.round(4)}"
-        ]
-        output["items"].push(temp)
+    result['conversion_rates'].each do |key, value|
+        if(units.include?(key))
+            temp = Hash[
+                "title" => "#{base} : #{key} = 1 : #{value.round(4)} ",
+                "subtitle" => "Last Update: #{result["time_last_update_utc"]}",
+                "icon" => Hash[
+                    "path" => "flags/#{key}.png"
+                ],
+                "arg" => "#{value.round(4)}"
+            ]
+            output["items"].push(temp)
+        end
     end
 end
 
