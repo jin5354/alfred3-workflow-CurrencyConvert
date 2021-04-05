@@ -1,8 +1,8 @@
-# alfred3-workflow-CurrencyConvert
+# alfred4-workflow-CurrencyConvert
 
-This alfred3 workflow can convert currency conveniently.
+This alfred4 workflow can convert currency conveniently.
 
-[Download](https://github.com/jin5354/alfred3-workflow-CurrencyConvert/releases)
+[Download](https://github.com/topazbarziv/alfred4-workflow-CurrencyConvert/releases)
 
 ## features
 
