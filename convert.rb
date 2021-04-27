@@ -13,6 +13,22 @@ data = JSON.parse(File.read('data.json'))
 base = data['base']
 units = data['units']
 
+
+def get_currency_rate_with_symble(base, *targets)
+    default_base = 'EUR'
+    access_key = "5413e55dd50ddb2555c63a9cd57c0306"
+    uri = URI("http://api.exchangeratesapi.io/v1/latest?access_key=#{access_key}")
+    result = JSON.parse(Net::HTTP.get(uri))
+    res = Hash['success' => result['success'], 'base' => base, 'timestamp' => result['timestamp']]
+    rates = Hash[]
+    targets.each do | target |
+        rates[target] = result['rates'][target] * result['rates'][default_base] / result['rates'][base]
+    end
+    res['rates'] = rates
+    return res
+end
+
+
 if hasARGV
     str = ARGV[0].lstrip.gsub('$', 'usd').gsub('￥', 'cny').gsub('¥', 'jpy').gsub('£', 'gbp').gsub('€', 'eur')
     to = str.match(/\sto\s/)
@@ -49,8 +65,7 @@ if hasARGV
             if units.include?(cy)
                 units.delete(cy)
             end
-            uri = URI("https://api.exchangeratesapi.io/latest?base=#{cy}&symbols=#{units.join(',')}")
-            result = JSON.parse(Net::HTTP.get(uri))
+            result = get_currency_rate_with_symble(cy, *units)
             result['rates'].each do |key, value|
                 temp = Hash[
                     "title" => "#{(num.to_f*value).round(2)} #{key}",
@@ -63,8 +78,7 @@ if hasARGV
                 output["items"].push(temp)
             end
         else
-            uri = URI("https://api.exchangeratesapi.io/latest?base=#{cy}&symbols=#{target}")
-            result = JSON.parse(Net::HTTP.get(uri))
+            result = get_currency_rate_with_symble(cy, target)
             result['rates'].each do |key, value|
                 temp = Hash[
                     "title" => "#{(num.to_f*value).round(2)} #{key}",
@@ -82,8 +96,7 @@ else
     if units.include?(base)
         units.delete(base)
     end
-    uri = URI("https://api.exchangeratesapi.io/latest?base=#{base}&symbols=#{units.join(',')}")
-    result = JSON.parse(Net::HTTP.get(uri))
+    result = get_currency_rate_with_symble(base, *units)
     result['rates'].each do |key, value|
         temp = Hash[
             "title" => "#{base} : #{key} = 1 : #{value.round(4)} ",
